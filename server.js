@@ -17,12 +17,12 @@ app.use(cors());
 // consentiamo alla cartella public di essere accessibile
 app.use(express.static('public'));
 
-// rotta home
+// rotta home del blog
 app.get("/", (req, res) => {
     res.send("Home del mio Blog")
 })
 
-// usiamo i routers
+// usiamo i routers impostando il prefisso /posts
 app.use('/posts', postsRouter);
 
 // avviamo il server

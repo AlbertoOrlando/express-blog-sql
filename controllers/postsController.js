@@ -1,5 +1,5 @@
 // importiamo il db
-const connection = require('../data/db.js');
+const connection = require('../data/db');
 
 // Funzione per ottenere tutti i post con i rispettivi tag
 function index(req, res) {

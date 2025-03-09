@@ -1,25 +1,20 @@
 // importiamo il db
 const connection = require('../data/db');
 
-// Funzione per ottenere tutti i post con i rispettivi tag
+//FUNCTION -> inseriamo le funzioni delle operazioni crud e la loro logica dandogli i nomi delle stesse operazione
+// index
 function index(req, res) {
-    // Query per ottenere tutti i post e i loro tag
+    // prepariamo la query
     const postSql = `
         SELECT *
         FROM posts
-        JOIN post_tag ON post_tag.post_id = posts.id
-        JOIN tags ON tags.id = post_tag.tag_id
     `;
 
-    // Eseguiamo la query per recuperare tutti i post
-    connection.query(postSql, (err, postResults) => {
-        if (err) {
-            // Se c'è un errore nella query, restituiamo un errore 500
-            return res.status(500).json({ error: "Database query failed" });
-        }
-        // Restituiamo i risultati della query in formato JSON
-        res.json(postResults);
-    });
+    // eseguiamo la query
+    connection.query(postSql, (err, results) => {
+        if (err) return res.status(500).json({ error: 'Database query failed' });
+        res.json(results);
+    })
 }
 
 // Funzione per ottenere un singolo post con i suoi tag
